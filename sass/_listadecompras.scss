@@ -1,0 +1,226 @@
+.listacompra {
+    //centrar
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: url("../assets/img/png3.png") no-repeat center bottom/30%;
+
+    .titulo {
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    .entrada {
+        //centrar
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .formularios {
+            padding: 10px;
+            margin: 10px;
+            justify-content: center;
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .botones {
+                display: flex;
+                justify-content: space-around;
+
+                .btn {
+                    background-color: #dcdcdc;
+                    border: 1px solid rgb(241, 241, 241);
+                    border-radius: 10px;
+                    padding: 5px;
+                    margin: 5px;
+                    margin-top: 30px;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .imagen {
+            width: 35%;
+        }
+
+        .lista-items {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+
+            .cartaItem {
+                padding: 20px;
+
+                .dato {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+
+                    label {
+                        font-size: 15px;
+                    }
+
+                    input {
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        padding: 4px;
+                        font-size: 12px;
+                    }
+                }
+
+                .titulo {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+
+                    /* Estilo predeterminado para el checkbox */
+                    input[type="checkbox"] {
+                        /* Establece aquí los estilos predeterminados para el checkbox */
+                        margin-top: auto;
+                        margin-bottom: auto;
+                    }
+
+                    /* Estilo cuando el checkbox está seleccionado */
+                    input[type="checkbox"]:checked {
+                        background-color: orange;
+                    }
+
+                    .producto {
+                        font-weight: bold;
+                        font-size: 30px;
+                        margin-top: auto;
+                        margin-bottom: auto;
+                    }
+                }
+
+                .botones {
+                    display: flex;
+                    justify-content: space-around;
+
+                    .btn {
+                        background-color: #dcdcdc;
+                        border: 1px solid rgb(241, 241, 241);
+                        border-radius: 10px;
+                        padding: 6px;
+                        font-size: 13px;
+                        margin-top: 10px
+                    }
+                }
+
+            }
+        }
+
+        .final {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 150px;
+
+
+            .form_total {
+                .btn {
+                    background-color: #dcdcdc;
+                    border: 1px solid rgb(241, 241, 241);
+                    border-radius: 10px;
+                    padding: 5px;
+                    font-size: 20px;
+                }
+            }
+
+            .btn-terminar {
+                background-color: #dcdcdc;
+                border: 1px solid rgb(241, 241, 241);
+                border-radius: 10px;
+                padding: 5px;
+                font-size: 20px;
+                margin-top: 30px;
+            }
+
+            .compras {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                label {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+
+    }
+}
+
+// MEDIA QUERIES
+
+//Quiebre de "pantallas grandes" a "pantallas pequeñas"
+@media (max-width: 959px) {
+    .listacompra {
+        .titulo {
+            font-size: 35px;
+        }
+
+        .entrada {
+            .formularios {
+                padding: 5px;
+                margin: 5px;
+                justify-content: center;
+
+                .item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                }
+
+                .botones {
+                    display: flex;
+                    justify-content: space-around;
+
+                    .btn {
+                        background-color: #dcdcdc;
+                        border: 1px solid rgb(241, 241, 241);
+                        border-radius: 10px;
+                        padding: 5px;
+                        margin: 5px;
+                        margin-top: 10px;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .imagen {
+                width: 80%;
+            }
+
+            .lista-items {
+                width: 100%;
+
+                .item {
+                    width: 90%;
+                }
+            }
+
+            .form_total {
+                .btn {
+                    font-size: 18px;
+                }
+            }
+
+        }
+    }
+}

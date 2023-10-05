@@ -1,0 +1,217 @@
+<!DOCTYPE html> <!--etiqueta que indica que esto es una estructura de html5-->
+<html lang="es"><!--esta etiqueta indica el lenguaje del contenido-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--meta description meta keywords-->
+    <meta name="description" content="Agenda de eventos y lista de la compra">
+    <meta name="keywords" content="agenda, lista de la compra, eventos">
+    <title>AW - Agenda</title>
+    <!--icono de la pestaña-->
+    <link rel="icon" href="./assets/img/logo PNG.png" type="image/png">
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- iconos bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!--estilos propios-->
+    <link rel="stylesheet" href="./sass/estilos.css">
+
+    <!-- SweetAlert2 y animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+
+
+</head>
+
+<body>
+    <header class="fixed-top"> <!--el header es una etiqueta semántica-->
+        <nav class="navbar navbar-expand-md navbar-light bg-black">
+            <a class="navbar-brand" href="./index.html" title="inicio">
+                <img src="./assets/img/logo PNG.png" alt="logo" title="logo" width="60" height="70" class="ms-3">
+            </a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Menu hamburguesa blanca -->
+                <span><i class="bi bi-list hamburguesa"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Agrupar hacia la izquierda -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.html" title="Agenda">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listacompra.html" title="Lista">Lista Compra</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="row agenda">
+            <h1 class="titulo">AGENDA</h1>
+            <div class="col-12 col-md-4 mt-3 mb-3 imagen">
+                <img src="./assets/img/png icono agenda.png" alt="Agenda" class="img-fluid">
+            </div>
+            <div class="col-12 mt-3 mb-5">
+                <div class="container row centrar">
+                    <!-- Leyenda -->
+                    <div class="leyenda col-12 row">
+                        <div class="col-6 col-md-3 linea">
+                            <div class="hoy legend-box"></div>
+                            <div>Hoy</div>
+                        </div>
+                        <div class="col-6 col-md-3 linea">
+                            <div class="cumpleanos legend-box"></div>
+                            <div>Cumpleaños</div>
+                        </div>
+                        <div class="col-6 col-md-3 linea">
+                            <div class="eventos legend-box"></div>
+                            <div>Eventos</div>
+                        </div>
+                        <div class="col-6 col-md-3 linea">
+                            <div class="feriados legend-box"></div>
+                            <div>Feriados</div>
+                        </div>
+                    </div>
+                    <!-- Calendario -->
+                    <div id='calendar' class="col-12 col-md-8 mt-3 mb-3 calendario"></div>
+                    <!-- Formulario -->
+                    <div class="col-12 col-md-4 mt-3 mb-3 formulario">
+                        <div id="formulario" class="formulario">
+                            <!-- Titulo -->
+                            <div class="mb-3">
+                                <label for="id" class="form-label"></label>
+                                <label for="titulo" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" required>
+                            </div>
+                            <!-- Descripción -->
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                                    required></textarea>
+                            </div>
+                            <!-- Fecha y hora inicio -->
+                            <div class="row">
+                                <div class="mb-3 col-6">
+                                    <label for="fecha" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                </div>
+                                <div class="mb-3 col-6">
+                                    <label for="hora" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" id="hora" name="hora" value="12:00"
+                                        required>
+                                </div>
+                            </div>
+                            <!-- Fecha y hora fin -->
+                            <div class="row">
+                                <div class="mb-3 col-6">
+                                    <label for="fecha_fin" class="form-label">Fecha fin</label>
+                                    <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required>
+                                </div>
+                                <div class="mb-3 col-6">
+                                    <label for="hora_fin" class="form-label">Hora fin</label>
+                                    <input type="time" class="form-control" id="hora_fin" name="hora_fin" value="13:00"
+                                        required>
+                                </div>
+                            </div>
+                            <!-- Tipo Select (Cumpleaños, Eventos, Feriados) -->
+                            <div class="mb-3">
+                                <label for="tipo" class="form-label">Tipo</label>
+                                <select class="form-select" id="tipo" name="tipo" required>
+                                    <option value="Eventos">Eventos</option>
+                                    <option value="Cumpleaños">Cumpleaños</option>
+                                    <option value="Feriados">Feriados</option>
+                                </select>
+                            </div>
+                            <!-- Botones -->
+                            <div class="row botones">
+                                <button id="btnGuardar" class="btn col-6 nuevo"><i class="bi bi-floppy2"></i></button>
+                                <button id="btnEliminar" class="btn col-3 seleccionado"><i
+                                        class="bi bi-trash3-fill"></i></button>
+                                <button id="btnModificar" class="btn col-3 seleccionado"><i
+                                        class="bi bi-pencil-fill"></i></button>
+                                <button id="btnLimpiar" class="btn col-3 seleccionado"><i
+                                        class="bi bi-x-circle-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 row  mt-3 mb-3 notas">
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">NOTAS IMPORTANTES</h2>
+                            <!-- Inout de texto multilinea -->
+                            <textarea class="form-control" id="notas" name="notas" rows="6" required></textarea>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">DOCUMENTOS / VENCIMIENTOS</h2>
+                            <textarea class="form-control" id="docsYVen" name="docsYVen" rows="6" required></textarea>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">VACACIONES</h2>
+                            <textarea class="form-control" id="vacaciones" name="vacaciones" rows="6"
+                                required></textarea>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">TAREAS PENDIENTES</h2>
+                            <textarea class="form-control" id="tareas" name="tareas" rows="6" required></textarea>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">NO OLVIDARME DE</h2>
+                            <textarea class="form-control" id="noOlvidar" name="noOlvidar" rows="6" required></textarea>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 nota">
+                            <h2 class="titulo">METAS Y OBJETIVOS</h2>
+                            <textarea class="form-control" id="metasYObj" name="metasYObj" rows="6" required></textarea>
+                        </div>
+                    </div>
+                    <!-- Estado del clima -->
+                    <div class="col-12 row clima">
+                        <div class="col-5 col-md-4 mt-3 cuadro row">
+                            <div class="col-12 titulo">
+                                <p>Estado del clima</p>
+                            </div>
+                            <div class="col-12 dato contenedor-estado">
+                                <img src="" alt="Clima" class="img-fluid" id="imagen_clima">
+                                <p id="estado"></p>
+                            </div>
+                            <div class="col-12 titulo">
+                                <p>Temp. <i class="bi bi-thermometer-half"></i></p>
+                            </div>
+                            <div class="col-12 dato">
+                                <p id="temperatura"></p>
+                            </div>
+                            <div class="col-12 titulo">
+                                <p>Viento <i class="bi bi-wind"></i></p>
+                            </div>
+                            <div class="col-12 dato">
+                                <p id="viento"></p>
+                            </div>
+                        </div>
+                        <!-- Texto -->
+                        <div class="col-5 col-md-6 mt-3 texto">
+                            <p>El clima actual para una mejor planificación.
+                                Mantente preparado y organizado para tus
+                                actividades y planes personales.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </main>
+
+
+    <!--bootstrap js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./agenda.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+</body>
+
+</html>
